@@ -1,25 +1,29 @@
 import React from 'react';
 import './App.css';
 
+import Header from './components/Header';
+import Table from './components/Table'
+
 import axios from 'axios'
 
-function App() {
+class App extends React.Component {
 
-  componentDidMount() {
-    axios.get('https://dog.ceo/api/breeds/image/random')
-    .then(response => {
-      console.log(response.data);
-    })
-    .catch(error => {
-      console.log(error);
-    })
+  constructor() {
+    super();
+    this.state = {
+    }
   }
 
-  return (
-    <div className="App">
-      <h1>App</h1>
-    </div>
-  );
+
+
+  render() {
+    return(
+      <div>
+        <Header />
+        <Table />
+      </div>
+    )
+  }
 }
 
 export default App;
