@@ -2,7 +2,6 @@ import React from 'react';
 
 class Table extends React.Component {
     render(){
-      const human =  this.props.characters.species==={} ? "loading..." : this.props.characters.species
         return(
             <div>
                 <table className="table">
@@ -22,8 +21,8 @@ class Table extends React.Component {
                             <td>{this.props.characters.birth_year}</td>
                             <td>{this.props.characters.height}</td>
                             <td>{this.props.characters.mass}</td>
-                            <td>{this.props.characters.homeworld}</td>
-                            <td>{human}</td>
+                            <td>{this.props.planet.name}</td>
+                            <td>{this.props.species.name}</td>
                         </tr>
                     </tbody>
                 </table>

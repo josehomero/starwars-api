@@ -10,7 +10,9 @@ class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      character:{}
+      character:{},
+      species:{},
+      planet:{}
     }
   }
 
@@ -22,13 +24,27 @@ componentDidMount(){
       character: data
     })
   })
+  fetch("https://swapi.dev/api/species/1/")
+  .then(response => response.json())
+  .then(data => {
+    this.setState({
+      species: data
+    })
+  })
+  fetch("http://swapi.dev/api/planets/1/")
+  .then(response => response.json())
+  .then(data => {
+    this.setState({
+      planet: data
+    })
+  })
 }
 
   render() {
     return(
       <div>
         <Header />
-        <Table characters={this.state.character} />
+        <Table characters={this.state.character} species={this.state.species} planet={this.state.planet}/>
       </div>
     )
   }
