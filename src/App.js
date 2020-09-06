@@ -6,10 +6,12 @@ import Table from './components/Table'
 
 import axios from 'axios'
 
+
 class App extends React.Component {
   constructor() {
     super()
     this.state = {
+      characters:[],
       character:{},
       species:{},
       planet:{}
@@ -17,13 +19,16 @@ class App extends React.Component {
   }
 
 componentDidMount(){
-  fetch("https://swapi.dev/api/people/1/")
+ 
+  fetch("https://swapi.dev/api/people/")
   .then(response => response.json())
   .then(data => {
+    console.log(data.results)
     this.setState({
-      character: data
+      characters: data.results
     })
   })
+  console.log(this.state.characters.name)
   fetch("https://swapi.dev/api/species/1/")
   .then(response => response.json())
   .then(data => {
@@ -44,7 +49,7 @@ componentDidMount(){
     return(
       <div>
         <Header />
-        <Table characters={this.state.character} species={this.state.species} planet={this.state.planet}/>
+        <Table characters={this.state.characters} species={this.state.species} planet={this.state.planet}/>
       </div>
     )
   }
