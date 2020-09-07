@@ -2,6 +2,9 @@ import React from 'react';
 
 class Table extends React.Component {
     render(){
+        const sChracters = this.props.character.map(character => {
+            <tr><td>character.name</td><td>character.age</td></tr>
+        })
         return(
             <div>
                 <table className="table">
@@ -16,14 +19,10 @@ class Table extends React.Component {
                         </tr>
                     </thead>    
                     <tbody>
-                        <tr>
-                            <td>{this.props.characters.name}</td>
-                            <td>{this.props.characters.birth_year}</td>
-                            <td>{this.props.characters.height}</td>
-                            <td>{this.props.characters.mass}</td>
-                            <td>{this.props.planet.name}</td>
-                            <td>{this.props.species.name}</td>
-                        </tr>
+                        
+                            
+                            {sChracters}
+                        
                     </tbody>
                 </table>
             </div>
