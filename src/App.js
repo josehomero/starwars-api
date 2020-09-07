@@ -26,7 +26,6 @@ componentDidMount(){
     console.log(data.results)
     this.setState({
      characters: data.results
-     
     })
   })
   console.log(this.state.characters.name)
