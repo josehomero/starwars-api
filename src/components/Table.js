@@ -5,8 +5,12 @@ function Table(props) {
     const sChracters = props.characters.map((character) => {
        return (
             <tr>
-                <td>character.name</td>
-                <td>character.age</td>
+                <td>{character.name}</td>
+                <td>{character.birth_year}</td>
+                <td>{character.height}</td>
+                <td>{character.mass}</td>
+                <td>{character.homeworld}</td>
+                <td>{character.species}</td>
             </tr>)
     })
     return (
@@ -23,10 +27,7 @@ function Table(props) {
                     </tr>
                 </thead>
                 <tbody>
-
-
                     {sChracters}
-
                 </tbody>
             </table>
         </div>

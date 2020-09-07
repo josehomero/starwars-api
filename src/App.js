@@ -12,7 +12,6 @@ class App extends React.Component {
     super()
     this.state = {
       characters:[],
-      character:{},
       species:{},
       planet:{}
     }
@@ -23,12 +22,11 @@ componentDidMount(){
   fetch("https://swapi.dev/api/people/")
   .then(response => response.json())
   .then(data => {
-    console.log(data.results)
     this.setState({
      characters: data.results
     })
   })
-  console.log(this.state.characters.name)
+
   fetch("https://swapi.dev/api/species/1/")
   .then(response => response.json())
   .then(data => {
