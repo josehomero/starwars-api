@@ -11,43 +11,48 @@ class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      characters:[],
-      species:{},
-      planet:{}
+      characters: [],
+      species: {},
+      planet: {}
     }
   }
 
-componentDidMount(){
- 
-  fetch("https://swapi.dev/api/people/")
-  .then(response => response.json())
-  .then(data => {
-    this.setState({
-     characters: data.results
-    })
-  })
+  async componentDidMount() {
 
-  fetch("https://swapi.dev/api/species/1/")
-  .then(response => response.json())
-  .then(data => {
+    const data = await fetch("https://swapi.dev/api/people/")
     this.setState({
-      species: data
+      characters: [...data.results]
     })
-  })
-  fetch("http://swapi.dev/api/planets/1/")
-  .then(response => response.json())
-  .then(data => {
-    this.setState({
-      planet: data
-    })
-  })
-}
+
+   /* fetch("https://swapi.dev/api/people/")
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          characters: data.results
+        })
+      })
+
+    fetch("https://swapi.dev/api/species/1/")
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          species: data
+        })
+      })
+    fetch("http://swapi.dev/api/planets/1/")
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          planet: data
+        })
+      })*/
+  }
 
   render() {
-    return(
+    return (
       <div>
         <Header />
-        <Table characters={this.state.characters} species={this.state.species} planet={this.state.planet}/>
+        <Table characters={this.state.characters} species={this.state.species} planet={this.state.planet} />
       </div>
     )
   }
