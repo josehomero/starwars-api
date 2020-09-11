@@ -20,32 +20,22 @@ class App extends React.Component {
   async componentDidMount() {
 
     const data = await fetch("https://swapi.dev/api/people/")
+      .then(response => response.json());
+
+    //loop through each character
+    for (const character in data.results) {
+      const speciesData = await fetch("https://swapi.dev/api/species/")
+      .then(response => response.json())
+
+      const planetData = await fetch("https://swapi.dev/api/planets/")
+      .then(response => response.json())
+      //get species
+      //get planet
+    }
+    //save to state
     this.setState({
       characters: [...data.results]
     })
-
-   /* fetch("https://swapi.dev/api/people/")
-      .then(response => response.json())
-      .then(data => {
-        this.setState({
-          characters: data.results
-        })
-      })
-
-    fetch("https://swapi.dev/api/species/1/")
-      .then(response => response.json())
-      .then(data => {
-        this.setState({
-          species: data
-        })
-      })
-    fetch("http://swapi.dev/api/planets/1/")
-      .then(response => response.json())
-      .then(data => {
-        this.setState({
-          planet: data
-        })
-      })*/
   }
 
   render() {
