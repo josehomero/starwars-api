@@ -1,6 +1,7 @@
 import React from 'react';
 
 function Table(props) {
+    console.log(props)
 
     const sChracters = props.characters.map((character) => {
        return (
@@ -9,8 +10,8 @@ function Table(props) {
                 <td>{character.birth_year}</td>
                 <td>{character.height}</td>
                 <td>{character.mass}</td>
-                <td>{character.homeworld}</td>
-                <td>{character.species}</td>
+                <td>{props.state.homeworld}</td>
+                <td>{props.state.species}</td>
             </tr>)
     })
     return (

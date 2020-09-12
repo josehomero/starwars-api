@@ -18,6 +18,9 @@ class App extends React.Component {
   }
 
   async componentDidMount() {
+    let planets = [];
+    let species = [];
+
 
     const data = await fetch("https://swapi.dev/api/people/")
       .then(response => response.json());
