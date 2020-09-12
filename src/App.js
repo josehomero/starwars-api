@@ -12,8 +12,8 @@ class App extends React.Component {
     super()
     this.state = {
       characters: [],
-      species: {},
-      planet: {}
+      species: [],
+      planet: []
     }
   }
 
@@ -23,18 +23,27 @@ class App extends React.Component {
       .then(response => response.json());
 
     //loop through each character
-    for (const character in data.results) {
-      const speciesData = await fetch("https://swapi.dev/api/species/")
-      .then(response => response.json())
+    for (const character of data.results) {
+      const planetURL = character.homeworld;
+      const planetData = await fetch(planetURL).then((res) => res.json())
+      planets.push(planetData.name)
+      console.log(planetData.name)
 
-      const planetData = await fetch("https://swapi.dev/api/planets/")
-      .then(response => response.json())
-      //get species
-      //get planet
+      const speciesURL = character.species.length < 1 ? 
+      "https://swapi.dev/api/species/1/" 
+      : character.species[0];
+      const speciesData = await fetch(speciesURL).then((response) => 
+      response.json()
+      )
+      species.push(speciesData.name)
+
     }
+
     //save to state
     this.setState({
-      characters: [...data.results]
+      characters: [...data.results],
+      planet: planets,
+      species: species
     })
   }
 
