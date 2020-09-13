@@ -10,8 +10,8 @@ function Table(props) {
                 <td>{character.birth_year}</td>
                 <td>{character.height}</td>
                 <td>{character.mass}</td>
-                <td>{props.state.homeworld}</td>
-                <td>{props.state.species}</td>
+                <td>{character.planetName}</td>
+                <td>{character.speciesName}</td>
             </tr>)
     })
     return (

@@ -22,23 +22,24 @@ class App extends React.Component {
     let species = [];
 
 
-    const data = await fetch("https://swapi.dev/api/people/")
-      .then(response => response.json());
+    const data = await fetch("https://swapi.dev/api/people/").then(response => 
+    response.json());
 
     //loop through each character
     for (const character of data.results) {
+
       const planetURL = character.homeworld;
       const planetData = await fetch(planetURL).then((res) => res.json())
-      planets.push(planetData.name)
-      console.log(planetData.name)
+      character.planetName = planetData.name;
 
-      const speciesURL = character.species.length < 1 ? 
-      "https://swapi.dev/api/species/1/" 
-      : character.species[0];
-      const speciesData = await fetch(speciesURL).then((response) => 
-      response.json()
+      const speciesURL =
+        character.species.length < 1 
+        ? "https://swapi.dev/api/species/1/"
+          : character.species[0];
+      const speciesData = await fetch(speciesURL).then((response) =>
+        response.json()
       )
-      species.push(speciesData.name)
+      character.speciesName = speciesData.name;
 
     }
 
