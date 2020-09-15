@@ -19,7 +19,7 @@ class App extends React.Component {
     let species = [];
 
 
-    const data = await fetch("https://swapi.dev/api/people/").then(response => 
+    const data = await fetch("HTTPS://swapi.dev/api/people/").then(response => 
     response.json());
 
     for (const character of data.results) {
@@ -29,7 +29,7 @@ class App extends React.Component {
 
       const speciesURL =
         character.species.length < 1 
-        ? "https://swapi.dev/api/species/1/"
+        ? "HTTPS://swapi.dev/api/species/1/"
           : character.species[0];
       const speciesData = await fetch(speciesURL).then((response) =>
         response.json()
