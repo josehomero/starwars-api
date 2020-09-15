@@ -4,9 +4,6 @@ import './App.css';
 import Header from './components/Header';
 import Table from './components/Table'
 
-import axios from 'axios'
-
-
 class App extends React.Component {
   constructor() {
     super()
@@ -25,9 +22,7 @@ class App extends React.Component {
     const data = await fetch("https://swapi.dev/api/people/").then(response => 
     response.json());
 
-    //loop through each character
     for (const character of data.results) {
-
       const planetURL = character.homeworld;
       const planetData = await fetch(planetURL).then((res) => res.json())
       character.planetName = planetData.name;
@@ -43,7 +38,6 @@ class App extends React.Component {
 
     }
 
-    //save to state
     this.setState({
       characters: [...data.results],
       planet: planets,
