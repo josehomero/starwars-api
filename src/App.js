@@ -31,8 +31,8 @@ class App extends React.Component {
       const speciesURL =
         character.species.length < 1 
         ? "https://swapi.dev/api/species/1/"
-          : character.species[0];
-      const speciesData = await fetch(speciesURL.replace("http", "https")).then((response) =>
+          : character.species[0].replace("http", "https")
+      const speciesData = await fetch(speciesURL).then((response) =>
         response.json()
       )
       character.speciesName = speciesData.name;
