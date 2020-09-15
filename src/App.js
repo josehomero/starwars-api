@@ -19,17 +19,18 @@ class App extends React.Component {
     let species = [];
 
 
-    const data = await fetch("HTTPS://swapi.dev/api/people/").then(response => 
+    const data = await fetch("http://swapi.dev/api/people/").then(response => 
     response.json());
 
     for (const character of data.results) {
       const planetURL = character.homeworld;
       const planetData = await fetch(planetURL).then((res) => res.json())
       character.planetName = planetData.name;
+      console.log(planetURL)
 
       const speciesURL =
         character.species.length < 1 
-        ? "HTTPS://swapi.dev/api/species/1/"
+        ? "http://swapi.dev/api/species/1/"
           : character.species[0];
       const speciesData = await fetch(speciesURL).then((response) =>
         response.json()
