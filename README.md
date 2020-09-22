@@ -1,7 +1,8 @@
-Star Wars API
+<h1>Star Wars API</h1>
 
 <br>
 A Star Wars API made using React and fetching API information from swapi.dev
+
 
 [Try it here!](https://nameless-harbor-93873.herokuapp.com/)
 
