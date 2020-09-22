@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 
 import Header from './components/Header';
-import Table from './components/Table'
+import CharTable from './components/CharTable'
 
 class App extends React.Component {
   constructor() {
@@ -50,7 +50,7 @@ class App extends React.Component {
     return (
       <div>
         <Header />
-        <Table characters={this.state.characters} species={this.state.species} planet={this.state.planet} />
+        <CharTable characters={this.state.characters} species={this.state.species} planet={this.state.planet} />
       </div>
     )
   }

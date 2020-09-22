@@ -1,7 +1,8 @@
 import React from 'react';
 
-function Table(props) {
-    console.log(props)
+import Table from 'react-bootstrap/Table'
+
+function CharTable(props) {
 
     const sChracters = props.characters.map((character) => {
        return (
@@ -15,8 +16,8 @@ function Table(props) {
             </tr>)
     })
     return (
-        <div>
-            <table className="table">
+        <Container>
+            <Table striped bordered hover>
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -30,9 +31,9 @@ function Table(props) {
                 <tbody>
                     {sChracters}
                 </tbody>
-            </table>
-        </div>
+            </Table>
+        </Container>
     )
 }
 
-export default Table
+export default CharTable
