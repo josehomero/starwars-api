@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 
 import Header from './components/Header';
 import CharTable from './components/CharTable'
@@ -8,23 +7,17 @@ class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      characters: [],
-      species: [],
-      planet: []
+      characters: []
     }
   }
 
-  async componentDidMount() {
-    let planets = [];
-    let species = [];
-
-
+  async getCharacterData() {
     const data = await fetch("https://swapi.dev/api/people/").then(response => 
     response.json());
 
     for (const character of data.results) {
       const planetURL = character.homeworld.replace("http", "https")
-      const planetData = await fetch(planetURL).then((res) => res.json())
+      const planetData = await fetch(planetURL).then((response) => response.json())
       character.planetName = planetData.name;
       
 
@@ -40,17 +33,19 @@ class App extends React.Component {
     }
 
     this.setState({
-      characters: [...data.results],
-      planet: planets,
-      species: species
+      characters: [...data.results]
     })
+  }
+
+  componentDidMount() {
+    this.getCharacterData()
   }
 
   render() {
     return (
       <div>
         <Header />
-        <CharTable characters={this.state.characters} species={this.state.species} planet={this.state.planet} />
+        <CharTable characters={this.state.characters}/>
       </div>
     )
   }

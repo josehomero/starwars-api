@@ -1,12 +1,12 @@
 import React from 'react';
 
 import Table from 'react-bootstrap/Table'
+import Container from 'react-bootstrap/Container'
 
 function CharTable(props) {
-
     const sChracters = props.characters.map((character) => {
-       return (
-            <tr>
+        return (
+            <tr key={character.name}>
                 <td>{character.name}</td>
                 <td>{character.birth_year}</td>
                 <td>{character.height}</td>
@@ -15,6 +15,7 @@ function CharTable(props) {
                 <td>{character.speciesName}</td>
             </tr>)
     })
+    
     return (
         <Container>
             <Table striped bordered hover>
